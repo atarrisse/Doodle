@@ -9,11 +9,19 @@ function ChatMessages() {
   if (error) return <p style={{ color: "red" }}>Error: {error.message}</p>;
 
   return (
-    <div className="flex flex-col gap-4 px-6">
-        {messages.map((msg) => (
-          <ChatBubble key={msg._id} message={msg.message} createdAt={msg.createdAt} author={msg.author} />
-        ))}
-    </div>
+      <div className="m-auto flex align-center justify-center px-6 py-4">
+        <ul className="flex flex-col-reverse gap-4">
+          {messages.map((msg) => (
+            <li key={msg._id}>
+              <ChatBubble
+                message={msg.message}
+                createdAt={msg.createdAt}
+                author={msg.author}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
   );
 }
 

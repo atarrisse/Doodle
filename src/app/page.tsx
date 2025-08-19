@@ -4,7 +4,7 @@ import Chat from "@/app/features/Chat";
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-[32px] items-center ">
+    <main className="flex flex-col items-center h-full">
       <Image
         alt=""
         src="/background.png"
@@ -12,9 +12,7 @@ export default function Home() {
         fill={true}
         className="z-[-1]"
       />
-      <section className="flex flex-colitems-center w-full max-w-[40rem]">
-        <Chat />
-      </section>
+      <Chat />
     </main>
   );
 }
