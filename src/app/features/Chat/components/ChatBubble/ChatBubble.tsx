@@ -8,11 +8,15 @@ type ChatBubbleProps = Pick<ChatMessage, "message" | "createdAt" | "author">;
 const ChatBubble: React.FC<ChatBubbleProps> = ({
   message,
   createdAt,
-  author = null,
+  author,
 }) => {
+  const isSelf = author === process.env.NEXT_PUBLIC_USERNAME;
+
   return (
     <div
-      className={`max-w-[65%] p-4 border-2 border-(--color-gray-light) rounded-sm bg-white`}
+      className={`max-w-[65%] p-4 border-2 border-(--color-gray-light) rounded-sm ${
+        isSelf ? "bg-(--color-yellow)" : "bg-white"
+      }`}
     >
       <cite
         className={`${
@@ -22,7 +26,9 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
         {author}
       </cite>
       <p>{message}</p>
-      <time className="text-sm text-(--text-secondary)">{format(new Date(createdAt), "dd MMM yyyy HH:mm")}</time>
+      <time className="text-sm text-(--text-secondary)">
+        {format(new Date(createdAt), "dd MMM yyyy HH:mm")}
+      </time>
     </div>
   );
 };

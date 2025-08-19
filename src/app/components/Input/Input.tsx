@@ -15,7 +15,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <input
         id={id}
         ref={ref}
-        className="bg-white rounded-sm border-2 border-(--color-blue-dark) h-[3rem] w-full px-2"
+        className="bg-white rounded-sm border-2 border-(--color-blue-dark) h-[3rem] w-full px-2 disabled:border-(--color-gray-dark) disabled:bg-(--color-gray-light)"
         {...props}
         aria-label={label}
       />

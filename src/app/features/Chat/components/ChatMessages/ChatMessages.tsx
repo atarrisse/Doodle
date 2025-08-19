@@ -1,16 +1,23 @@
 "use client";
-import LoadingDots from "@/app/components/LoadingDots/LoadingDots";
-import useChatMessages from "../../hooks/useChatMessages";
+import { Error, LoadingDots } from "@/app/components";
+
 import ChatBubble from "../ChatBubble";
+import useChatMessages from "../../hooks/useChatMessages";
 
 function ChatMessages() {
   const { messages, loading, error } = useChatMessages();
 
-  if (error) return <p style={{ color: "red" }}>Error: {error.message}</p>;
+  if (error) {
+  return (
+    <div className="h-full flex justify-center items-center">
+      <Error />
+    </div>
+  );
+  }
 
   if (loading) {
     return (
-      <div className="flex content-center">
+      <div className="h-full flex justify-center items-center">
         <LoadingDots />
       </div>
     );
@@ -18,17 +25,19 @@ function ChatMessages() {
 
   return (
     <div className="m-auto flex align-center justify-center px-6 py-4">
-      <ul className="flex flex-col-reverse gap-4">
-        {messages.map((msg) => (
-          <li key={msg._id}>
-            <ChatBubble
-              message={msg.message}
-              createdAt={msg.createdAt}
-              author={msg.author}
-            />
-          </li>
-        ))}
-      </ul>
+      {messages.length && (
+        <ul className="flex flex-col-reverse gap-4">
+          {messages.map((msg) => (
+            <li key={msg._id}>
+              <ChatBubble
+                message={msg.message}
+                createdAt={msg.createdAt}
+                author={msg.author}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
