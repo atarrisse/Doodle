@@ -3,19 +3,27 @@ import { render } from "@testing-library/react";
 import ChatBubble from ".";
 
 describe("ChatBubble", () => {
-  it("renders sender", () => {
+  it("renders author", () => {
     const { container } = render(
-      <ChatBubble message="Hello" timestamp="9999" />
+      <ChatBubble message="Hello" createdAt="2025-08-18T09:45:51.182Z" />
     );
-    const sender = container.querySelector("cite");
-    expect(sender?.className).toContain("sr-only");
+    const author = container.querySelector("cite");
+    expect(author?.className).toContain("sr-only");
   });
 
-  it("doesn't render sender", () => {
+  it("doesn't render author", () => {
     const { container } = render(
-      <ChatBubble sender="Someone" message="Hello" timestamp="9999" />
+      <ChatBubble
+        author="Someone"
+        message="Hello"
+        createdAt="2025-08-18T09:45:51.182Z"
+      />
     );
-    const sender = container.querySelector("cite");
-    expect(sender?.className).not.toContain("sr-only");
+    const author = container.querySelector("cite");
+    expect(author?.className).not.toContain("sr-only");
   });
+
+  it("formats date", () => {
+    // TODO
+  })
 });

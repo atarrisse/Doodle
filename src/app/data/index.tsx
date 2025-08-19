@@ -1,7 +1,7 @@
 export type ChatMessage = {
     _id: string;
     message: string;
-    author: string;
+    author?: string;
     createdAt: string;
 };
 

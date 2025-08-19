@@ -1,6 +1,7 @@
 import React from "react";
 
 import type { ChatMessage } from "@/app/data";
+import { format } from "date-fns";
 
 type ChatBubbleProps = Pick<ChatMessage, "message" | "createdAt" | "author">;
 
@@ -10,10 +11,18 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
   author = null,
 }) => {
   return (
-    <div className={`max-w-[65%] my-4 p-4 bg-[${author ? "#FCF6C5" : "#FFF"}]`}>
-      <cite className={`${!author &&  "sr-only"}`}>{author}</cite>
+    <div
+      className={`max-w-[65%] p-4 border-2 border-(--color-gray-light) rounded-sm bg-white`}
+    >
+      <cite
+        className={`${
+          !author && "sr-only"
+        } text-(--text-secondary) text-sm not-italic`}
+      >
+        {author}
+      </cite>
       <p>{message}</p>
-      <time>{createdAt}</time>
+      <time className="text-sm text-(--text-secondary)">{format(new Date(createdAt), "dd MMM yyyy HH:mm")}</time>
     </div>
   );
 };

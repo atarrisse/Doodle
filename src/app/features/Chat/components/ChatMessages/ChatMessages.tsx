@@ -9,7 +9,7 @@ function ChatMessages() {
   if (error) return <p style={{ color: "red" }}>Error: {error.message}</p>;
 
   return (
-    <div>
+    <div className="flex flex-col gap-4 px-6">
         {messages.map((msg) => (
           <ChatBubble key={msg._id} message={msg.message} createdAt={msg.createdAt} author={msg.author} />
         ))}
