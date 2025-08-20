@@ -34,6 +34,7 @@ For more information, please check the [hiring challenge](https://github.com/Doo
 
    `npm run dev`
 
+https://github.com/user-attachments/assets/d9e3cf3c-bcde-408e-82cf-59d66e6d639b
 
 ## 📚 Stack
 
@@ -130,6 +131,7 @@ E2E test to check for the whole flow would check for:
 
 - Setup a Docker container
 - Switch the to long-polling for better performance
+- Fix the decoding of charaters
 - Setup Integration tests with Cypress
 - Setup E2E tests with Cypress
 - Setup accessibility tests with Axe
