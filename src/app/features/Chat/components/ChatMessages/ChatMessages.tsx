@@ -25,8 +25,8 @@ function ChatMessages() {
 
   return (
     <div className="m-auto flex align-center justify-center px-6 py-4">
-      {messages.length && (
-        <ul className="flex flex-col-reverse gap-4">
+      {messages && messages.length && (
+        <ul className="flex flex-col gap-4">
           {messages.map((msg) => (
             <li key={msg._id} className="contents" >
               <ChatBubble

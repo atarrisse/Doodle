@@ -13,8 +13,7 @@ const ChatInput: React.FC = ({}) => {
     seIsLoading(true)
     e.preventDefault();
     if (message.trim()) {
-      console.log(message.trim());
-      const messages = await sendMessage(message);
+      await sendMessage(message);
       setMessage("");
     }
     seIsLoading(false)
