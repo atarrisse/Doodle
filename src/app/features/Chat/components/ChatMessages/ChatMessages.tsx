@@ -1,5 +1,5 @@
 "use client";
-import { Error, LoadingDots } from "@/app/components";
+import { Error, Loading } from "@/app/components";
 
 import ChatBubble from "../ChatBubble";
 import useChatMessages from "../../hooks/useChatMessages";
@@ -18,7 +18,7 @@ function ChatMessages() {
   if (loading) {
     return (
       <div className="h-full flex justify-center items-center">
-        <LoadingDots />
+        <Loading />
       </div>
     );
   }
@@ -28,7 +28,7 @@ function ChatMessages() {
       {messages.length && (
         <ul className="flex flex-col-reverse gap-4">
           {messages.map((msg) => (
-            <li key={msg._id}>
+            <li key={msg._id} className="contents" >
               <ChatBubble
                 message={msg.message}
                 createdAt={msg.createdAt}
