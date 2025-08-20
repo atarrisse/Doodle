@@ -1,36 +1,147 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Doodle Challenge
 
-## Getting Started
+Take Home assessment for position of Frontend Engineer at Doodle.
 
-First, run the development server:
+## Task requirements
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+#### We would like you to build a simple **chat interface** in TypeScript that sends and displays messages from all senders.
+
+| desktop                                                             |  mobile                                                           |
+| ------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| <img src="./assets/desktop.png" width="400" alt="desktop layout" /> | <img src="./assets/mobile.png" width="170" alt="mobile layout" /> |
+
+Backend: [Frontend Challenge Chat API repository](https://github.com/DoodleScheduling/frontend-challenge-chat-api)
+
+For more information, please check the [hiring challenge](https://github.com/DoodleScheduling/hiring-challenges/tree/master/frontend-engineer).
+
+
+## 💻 Setup and run
+
+1. As part of the challenge, the a chat interface need to connects to an API. Please follow the documentation to setup up the backend:
+
+   [Doodle Frontend Challenge API](https://github.com/DoodleScheduling/frontend-challenge-chat-api)
+
+
+1. ‼️ Make sure you have the `.env` file on the root of the project
+
+
+1. Download and install this repo
+
+   `npm i`
+
+
+1. Run the project locally
+
+   `npm run dev`
+
+
+## 📚 Stack
+
+- React
+- Typescript
+- NextJS
+- Jest
+- Reat Testing Library
+- Tailwind
+
+## 📂 Folder structure
+
+```
+🚨 `index` files only do import/exports
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Application
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+.
+├── assets
+├── public
+├── src
+│   └── app
+│       ├── components  // components to be used in multiple places
+│       ├── data        // Backend communication
+│       ├── features    
+│       │   └── Chat    // Chat feature
+│       ├── globals.css
+│       ├── layout.tsx
+│       └── page.tsx
+├── ...
+├── .env
+├── .nvmrc
+└── package.json
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Component
 
-## Learn More
+```
+.
+└── Component
+    ├── Component.tsx     // implementation
+    ├── Component.test.tsx // unit test
+    └── index.tsx          // exports
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Backend integration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+In order to deliver real-time updates, a short polling mechanism was implemented (see [polling.ts](./src/app/data/polling.ts)). Although long polling is more performatic, short polling demanded only client-side changes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 🎨 Styling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Due to limited time constraints, the tool of choice was inline Tailwind to gain speed. Color variables were set in `global.css` file, in an attempt to keep the visuals consistent. A trade-off is that this approach makes it harder to read and debug styles. Using tools like prettier may help with that.
+My preferred architecture would be using CSS modules, creating a Component.style.ts file, for the encapsulation and flexibility it provides.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧪 Testing
+
+### Unit testing
+
+Stack: [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/)
+
+### Integration test
+
+Due to time contraint E2E tests were not implements.
+
+Stack suggested: [cypress](https://www.cypress.io/) 
+
+Coverage:
+- Message flow: send → API → display
+- Real-time Updates: Polling mechanism and message synchronization
+- Error Handling: network/API failures
+- State Management: Loading states, error states, message deduplication
+- User Experience: Form validation, disabled states
+
+
+### E2E test
+
+Due to time contraint E2E tests were not implements.
+
+Stack suggested: [cypress](https://www.cypress.io/)
+
+E2E test to check for the whole flow would check for:
+
+- Message Sending: Complete flow from typing to display
+- Real-time Updates: Polling mechanism with actual API
+- Message History: Persistence across page refreshes
+
+
+## 👣 Next steps
+
+### Tech
+
+- Setup a Docker container
+- Switch the to long-polling for better performance
+- Setup Integration tests with Cypress
+- Setup E2E tests with Cypress
+- Setup accessibility tests with Axe
+- Setup eslint configuration
+- Setup prettier for Tailwind
+- Setup custom configuration for Tailwind
+- Improve Error handling
+- Add Custom font face that matches the image
+- Add tracing, setup dashboards and alerts
+- Add analyticy support
+
+### Product / UX
+
+- If user is at the bottom and sends new message, scroll to this new message
+- Add an indicator that new messages were received
