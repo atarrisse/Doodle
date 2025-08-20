@@ -7,7 +7,6 @@ const props = {
     id: "id"
 };
 
-
 describe('Input component', () => {
     it('displays the correct value', () => {
         const { getByRole } = render(<Input {...props} value="hello" onChange={() => { } }  />);
