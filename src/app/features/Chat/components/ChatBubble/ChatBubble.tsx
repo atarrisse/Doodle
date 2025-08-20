@@ -15,7 +15,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
   return (
     <div
       className={`max-w-[65%] p-4 border-2 border-(--color-gray-light) rounded-sm ${
-        isSelf ? "bg-(--color-yellow)" : "bg-white"
+        isSelf ? "bg-(--color-yellow) self-end" : "bg-white self-start"
       }`}
     >
       <cite
